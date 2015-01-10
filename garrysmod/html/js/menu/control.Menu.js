@@ -1,4 +1,3 @@
-
 if (!IN_ENGINE)
 {
 	window.util = {
@@ -12,7 +11,7 @@ var MapIndex = {}
 
 var subscriptions = new Subscriptions();
 
-function MenuController( $scope, $rootScope )
+App.controller( 'MenuController', function MenuController( $scope, $rootScope )
 {
 	$rootScope.ShowBack = false;
 	$scope.Version = "0";
@@ -34,7 +33,7 @@ function MenuController( $scope, $rootScope )
 		$( '.popup:not(.language_list)' ).hide();
 		$( '.language_list' ).toggle();
 	}
-	
+
 	$scope.ToggleGames = function ()
 	{
 		$( '.popup:not(.games_list)' ).hide();
@@ -83,7 +82,7 @@ function MenuController( $scope, $rootScope )
 	lua.Run( "UpdateMapList()" );
 
 	//
-	// Languages 
+	// Languages
 	//
 	$rootScope.Languages = []
 	$rootScope.Language = 'en';
@@ -99,7 +98,7 @@ function MenuController( $scope, $rootScope )
 
 	//
 	// Controls
-	// 
+	//
 	$scope.BackToGame = function()
 	{
 		lua.Run( "RawConsoleCommand( 'gameui_hide' );" );
@@ -141,7 +140,7 @@ function MenuController( $scope, $rootScope )
 	$scope.InGame = false;
 
 	// Kinect options
-	$scope.kinect = 
+	$scope.kinect =
 	{
 		available: util.MotionSensorAvailable(),
 		show_color: false,
@@ -170,7 +169,7 @@ function MenuController( $scope, $rootScope )
 			lua.Run( "RunConsoleCommand( \"sensor_color_show\", %s )", $scope.kinect.show_color ? "1" : "0" );
 		}
 	}
-}
+});
 
 function SetInGame( bool )
 {
@@ -227,7 +226,7 @@ function GetHighestKey( obj )
 	var h = 0;
 	var v = "";
 
-	for ( k in obj ) 
+	for ( k in obj )
 	{
 		if ( obj[k] > h )
 		{
@@ -281,7 +280,7 @@ function UpdateMaps( inmaps )
 			MapIndex[v.toLowerCase()] = true;
 		}
 
-		mapList.push( 
+		mapList.push(
 		{
 			order: order,
 			category: k,
@@ -312,7 +311,7 @@ function UpdateLanguage( lang )
 {
 	gScope.Language = lang;
 	gScope.$broadcast( "languagechanged" );
-	UpdateDigest( gScope, 50 );	
+	UpdateDigest( gScope, 50 );
 }
 
 function UpdateGames( games )
@@ -335,7 +334,7 @@ function UpdateVersion( version, branch )
 {
 	gScope.Version 	= 	version;
 	gScope.Branch 	= 	branch;
-	
+
 	UpdateDigest( gScope, 100 );
 }
 

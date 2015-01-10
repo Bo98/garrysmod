@@ -1,8 +1,7 @@
-
 var IN_ENGINE = navigator.userAgent.indexOf( "Valve Source Client" ) != -1;
 var IS_SPAWN_MENU = true
 
-var App = angular.module( 'CreationsApp', [ 'tranny' ] );
+var App = angular.module( 'CreationsApp', [ 'ngRoute', 'tranny' ] );
 
 App.config(function ( $routeProvider, $locationProvider )
 {
@@ -17,7 +16,7 @@ function UpdateDigest( scope, timeout )
 	if ( !scope ) return;
 	if ( scope.DigestUpdate ) return;
 
-	scope.DigestUpdate = setTimeout( function ()
+	scope.DigestUpdate = setTimeout( function()
 	{
 		scope.DigestUpdate = 0;
 		scope.$digest();
@@ -27,7 +26,7 @@ function UpdateDigest( scope, timeout )
 
 //We already have a limitTo filter built-in to angular,
 //let's make a startFrom filter
-App.filter( 'startFrom', function ()
+App.filter( 'startFrom', function()
 {
 	return function ( input, start )
 	{
@@ -47,7 +46,7 @@ function CCreations( $scope, $timeout, $location )
 
 	CreationScope.DupeDisabled = "disabled";
 
-	CreationScope.Categories = 
+	CreationScope.Categories =
 	[
 		"trending",
 		"popular",
@@ -58,32 +57,32 @@ function CCreations( $scope, $timeout, $location )
 		"mine",
 	];
 
-	$scope.IfElse = function ( b, a, c )
+	$scope.IfElse = function( b, a, c )
 	{
 		if ( b ) return a;
 		return c;
 	}
 
-	$scope.OpenWorkshopFile = function (id) 
+	$scope.OpenWorkshopFile = function(id)
 	{
 		if ( !id ) return;
 		lua.Run("steamworks.ViewFile( %s )", String(id));
 	}
 
-	$scope.SaveSave=function() 
+	$scope.SaveSave = function()
 	{
 		lua.Run("RunConsoleCommand( \"gm_save\", \"spawnmenu\" );");
 
 		$scope.SaveDisabled = "disabled";
 
-		$timeout(function() 
+		$timeout(function()
 		{
 			$scope.SaveDisabled = "";
 
-		},5000);
+		}, 5000);
 	}
 
-	$scope.SaveDupe = function() 
+	$scope.SaveDupe = function()
 	{
 		$scope.DupeDisabled = "disabled";
 		lua.Run("RunConsoleCommand( \"dupe_save\", \"spawnmenu\" );");
@@ -103,7 +102,7 @@ function SetMap( mapname )
 //
 // Enable the dupe save button
 //
-function SetDupeSaveState( b ) 
+function SetDupeSaveState( b )
 {
 	CreationScope.DupeDisabled = b ? "" : "disabled";
 	UpdateDigest( CreationScope, 10 );

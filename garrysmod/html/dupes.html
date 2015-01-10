@@ -3,7 +3,7 @@
 
 	<title>Creations</title>
 
-	
+
 	<link rel="stylesheet" type="text/css" href="css/Workshop.css" />
 	<link rel="stylesheet" type="text/css" href="css/creations/Creations.css" />
 
@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="js/thirdparty/jquery.js"></script>
 	<script type="text/javascript" src="js/thirdparty/jquery-color.js"></script>
 	<script type="text/javascript" src="js/thirdparty/angular.js"></script>
+	<script type="text/javascript" src="js/thirdparty/angular-route.js"></script>
 
 	<script type="text/javascript" src="js/menu/WorkshopFiles.js"></script>
 	<script type="text/javascript" src="js/svc.Tranny.js"></script>
@@ -19,13 +20,13 @@
 	<script type="text/javascript" src="js/creations/dupes.js"></script>
 	<script type="text/javascript" src="js/creations/common.js"></script>
 	<script type="text/javascript" src="js/menu/control.Dupes.js"></script>
-	
+
 </head>
 
 <body ng-app="CDupesApp" ng-controller="CDupes">
 
 	<div class="options">
-			
+
 		<!-- DUPES -->
 
 		<ul>
@@ -54,13 +55,13 @@
 			<li>&nbsp;</li>
 
 			<li><button ng-click="SaveDupe();" ng-tranny="'dupes.savedupe'" class="savedupebutton {{DupeDisabled}}" enabled="false">..</button></li>
-			
+
 		</ul>
 
 			<!--
 			<input type="button" value="Reload Page" onClick="document.location.reload(true)">
 			-->
-		
+
 
 	</div>
 

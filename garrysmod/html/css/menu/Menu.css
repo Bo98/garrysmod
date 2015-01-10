@@ -32,6 +32,11 @@ A
 	text-decoration: none;
 }
 
+A[ng-click]
+{
+	cursor: pointer;
+}
+
 DIV.page
 {
 	position: absolute;
@@ -151,33 +156,9 @@ DIV.disabled name
 	color: red;
 }
 
-
 DIV.disabled
 {
 	opacity: 0.6;
-}
-
-.topnav A
-{
-	color: #fff;
-	margin: 0px 2px;
-	background-color: #0af;
-	padding: 1px 5px;
-	border-radius: 2px;
-	text-shadow: 1px 1px 0 #666;
-}
-
-.topnav A:hover
-{
-	text-shadow: none;
-}
-
-.topnav 
-{
-	 background-color: white; 
-	 padding: 5px; 
-	 border-radius: 3px; 
-	 font-size: 11px;
 }
 
 .whiterounded

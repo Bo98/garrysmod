@@ -1,18 +1,17 @@
-
 var Scope		= null
 var RequestNum	= {};
 var DigestUpdate = 0;
 var ServerTypes = {};
 var FirstTime = true;
 
-function ControllerServers( $scope, $element, $rootScope, $location )
+App.controller('ControllerServers', function ControllerServers( $scope, $element, $rootScope, $location )
 {
 	Scope = $rootScope;
 	Scope.ShowTab = 'internet';
 
 	if ( !Scope.CurrentGamemode )
 		Scope.CurrentGamemode = null;
-	
+
 	if ( !Scope.Refreshing )
 		Scope.Refreshing = {}
 
@@ -37,7 +36,7 @@ function ControllerServers( $scope, $element, $rootScope, $location )
 			gm[k].num_servers		= 0
 			gm[k].num_players		= 0
 		}
-		
+
 		if ( !IN_ENGINE )
 			TestUpdateServers( Scope.ServerType, RequestNum[ Scope.ServerType ] );
 
@@ -122,7 +121,7 @@ function ControllerServers( $scope, $element, $rootScope, $location )
 		var FirstTime = false;
 		if ( !ServerTypes[type] )
 		{
-			ServerTypes[type] = 
+			ServerTypes[type] =
 			{
 				gamemodes: {},
 				list: []
@@ -138,7 +137,6 @@ function ControllerServers( $scope, $element, $rootScope, $location )
 
 		if ( FirstTime )
 		{
-			//lua.Run( "DoStopServers()" );
 			$scope.Refresh();
 		}
 	}
@@ -166,7 +164,7 @@ function ControllerServers( $scope, $element, $rootScope, $location )
 		FirstTime = false;
 		$scope.SwitchType( 'internet' );
 	}
-}
+});
 
 function FinishedServeres( type )
 {
@@ -180,7 +178,7 @@ function GetGamemode( name, type )
 
 	if ( ServerTypes[type].gamemodes[name] ) return ServerTypes[type].gamemodes[name]
 
-	ServerTypes[type].gamemodes[name] = 
+	ServerTypes[type].gamemodes[name] =
 	{
 		name:			name,
 		servers:		[],
@@ -212,7 +210,7 @@ function AddServer( type, id, ping, name, desc, map, players, maxplayers, botpla
 		players:		parseInt( players ) - parseInt( botplayers ),
 		maxplayers:		parseInt( maxplayers ),
 		botplayers:		parseInt( botplayers ),
-		pass:			pass,
+		pass:			~~pass,
 		lastplayed:		parseInt( lastplayed ),
 		address:		address,
 		gamemode:		gamemode,
@@ -246,7 +244,7 @@ function AddServer( type, id, ping, name, desc, map, players, maxplayers, botpla
 	gm.order = gm.num_players + Math.random();
 
 	UpdateDigest( Scope, 50 );
-	
+
 }
 
 function MissingGamemodeIcon( element )

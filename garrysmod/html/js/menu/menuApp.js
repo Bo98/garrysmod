@@ -1,11 +1,13 @@
-
 var IN_ENGINE = navigator.userAgent.indexOf( "Valve Source Client" ) != -1;
 var IS_SPAWN_MENU = false
 
-var App = angular.module( 'MenuApp', [ 'tranny', 'ui' ] );
+var App = angular.module( 'MenuApp', [ 'ngRoute', 'tranny', 'ui.keypress' ] );
 
-App.config(function ( $routeProvider, $locationProvider )
+App.config(function ( $routeProvider, $locationProvider, $compileProvider )
 {
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|asset):/);
+	$compileProvider.imgSrcSanitizationWhitelist(/^\s*((https?|ftp|file|blob|asset):|data:image\/)/);
+
 	$routeProvider.when('/', { templateUrl: 'template/main.html' } );
 	$routeProvider.when('/addons/', { templateUrl: 'template/addon_list.html' } );
 	$routeProvider.when('/newgame/', { templateUrl: 'template/newgame.html' } );

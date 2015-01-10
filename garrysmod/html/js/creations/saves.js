@@ -1,5 +1,4 @@
-
-App = angular.module( 'CSavesApp', [ 'tranny' ] );
+App = angular.module( 'CSavesApp', [ 'ngRoute', 'tranny' ] );
 
 App.config(function ( $routeProvider, $locationProvider )
 {
@@ -15,7 +14,7 @@ function CSaves( $scope, $timeout, $location )
 	CreationScope		= $scope;
 	CreationLocation	= $location;
 
-	CreationScope.Categories = 
+	CreationScope.Categories =
 	[
 		"trending",
 		"popular",
@@ -38,19 +37,19 @@ function CSaves( $scope, $timeout, $location )
 		"others"
 	];
 
-	$scope.IfElse = function ( b, a, c )
+	$scope.IfElse = function( b, a, c )
 	{
 		if ( b ) return a;
 		return c;
 	}
 
-	$scope.OpenWorkshopFile = function (id) 
+	$scope.OpenWorkshopFile = function(id)
 	{
 		if ( !id ) return;
 		lua.Run("steamworks.ViewFile( %s )", String(id));
 	}
 
-	$scope.SaveSave = function ()
+	$scope.SaveSave = function()
 	{
 		lua.Run( "RunConsoleCommand( \"gm_save\", \"spawnmenu\" );" );
 

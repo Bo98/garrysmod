@@ -1,5 +1,4 @@
-
-App = angular.module( 'CDupesApp', [ 'tranny' ] );
+App = angular.module( 'CDupesApp', [ 'ngRoute', 'tranny' ] );
 
 App.config(function ( $routeProvider, $locationProvider )
 {
@@ -17,7 +16,7 @@ function CDupes( $scope, $timeout, $location )
 
 	CreationScope.DupeDisabled = "disabled";
 
-	CreationScope.Categories = 
+	CreationScope.Categories =
 	[
 		"trending",
 		"popular",
@@ -41,19 +40,19 @@ function CDupes( $scope, $timeout, $location )
 		"others"
 	];
 
-	$scope.IfElse = function ( b, a, c )
+	$scope.IfElse = function( b, a, c )
 	{
 		if ( b ) return a;
 		return c;
 	}
 
-	$scope.OpenWorkshopFile = function (id) 
+	$scope.OpenWorkshopFile = function(id)
 	{
 		if ( !id ) return;
 		lua.Run("steamworks.ViewFile( %s )", String(id));
 	}
 
-	$scope.SaveDupe = function() 
+	$scope.SaveDupe = function()
 	{
 		$scope.DupeDisabled = "disabled";
 		lua.Run("RunConsoleCommand( \"dupe_save\", \"spawnmenu\" );");
@@ -63,7 +62,7 @@ function CDupes( $scope, $timeout, $location )
 //
 // Enable the dupe save button
 //
-function SetDupeSaveState( b ) 
+function SetDupeSaveState( b )
 {
 	CreationScope.DupeDisabled = b ? "" : "disabled";
 	UpdateDigest( CreationScope, 10 );

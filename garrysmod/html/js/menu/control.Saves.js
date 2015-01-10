@@ -1,7 +1,6 @@
-
 save = new WorkshopFiles();
 
-function ControllerSaves($scope, $rootScope, $location, $timeout, $routeParams)
+App.controller('ControllerSaves', function ControllerSaves( $scope, $rootScope, $location, $timeout, $routeParams )
 {
 
 	$rootScope.ShowBack = true;
@@ -9,7 +8,7 @@ function ControllerSaves($scope, $rootScope, $location, $timeout, $routeParams)
 
 	save.Init( 'ws_save', $scope, $rootScope );
 
-	Scope.Categories = 
+	Scope.Categories =
 	[
 		"trending",
 		"popular",
@@ -42,25 +41,25 @@ function ControllerSaves($scope, $rootScope, $location, $timeout, $routeParams)
 	{
 		lua.Run( "file.Delete( %s, \"MOD\" );", entry.info.file );
 		lua.Run( "file.Delete( %s, \"MOD\" );", entry.background );
-		
+
 		$scope.Switch( $scope.Category, $scope.Offset );
 	}
 
-	if ( IS_SPAWN_MENU ) 
+	if ( IS_SPAWN_MENU )
 	{
-		if ( $routeParams.Category ) 
+		if ( $routeParams.Category )
 		{
-			$timeout( function () { $scope.SwitchWithTag( $routeParams.Category, 0, $routeParams.Tag, $scope.MapName ); }, 100 );
+			$timeout( function() { $scope.SwitchWithTag( $routeParams.Category, 0, $routeParams.Tag, $scope.MapName ); }, 100 );
 			return;
 		}
 
-		$timeout( function () { $scope.SwitchWithTag('trending', 0, $scope.MapName ); }, 100 );
+		$timeout( function() { $scope.SwitchWithTag('trending', 0, $scope.MapName ); }, 100 );
 	}
-	else 
+	else
 	{
 		$scope.Switch( 'local', 0 );
 	}
-}
+});
 
 function OnGameSaved()
 {

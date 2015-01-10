@@ -1,10 +1,9 @@
-
 dupe = new WorkshopFiles();
 
-function ControllerDupes($scope, $rootScope, $location, $timeout, $routeParams) 
+App.controller('ControllerDupes', function ControllerDupes( $scope, $rootScope, $location, $timeout, $routeParams )
 {
 
-	$rootScope.ShowBack = true;	
+	$rootScope.ShowBack = true;
 	Scope = $scope;
 
 	dupe.Init( 'ws_dupe', $scope, $rootScope );
@@ -26,7 +25,7 @@ function ControllerDupes($scope, $rootScope, $location, $timeout, $routeParams)
 	{
 		lua.Run( "file.Delete( %s, \"MOD\" );", entry.info.file );
 		lua.Run( "file.Delete( %s, \"MOD\" );", entry.background );
-		
+
 		$scope.Switch( $scope.Category, $scope.Offset );
 	}
 
@@ -45,9 +44,9 @@ function ControllerDupes($scope, $rootScope, $location, $timeout, $routeParams)
 		}, 5000 );
 	}
 
-	if (IS_SPAWN_MENU) 
+	if (IS_SPAWN_MENU)
 	{
-		if ($routeParams.Category) 
+		if ($routeParams.Category)
 		{
 			$timeout(function () { $scope.SwitchWithTag( $routeParams.Category, 0, $routeParams.Tag ); }, 10 );
 			return;
@@ -55,11 +54,11 @@ function ControllerDupes($scope, $rootScope, $location, $timeout, $routeParams)
 
 		$timeout(function () { $scope.SwitchWithTag( 'trending', 0, '' ); }, 10 );
 	}
-	else 
+	else
 	{
 		$scope.Switch('local', 0);
 	}
-}
+});
 
 function OnGameSaved()
 {

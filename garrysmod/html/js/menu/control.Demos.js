@@ -1,8 +1,6 @@
-
 demo = new WorkshopFiles();
 
-
-function ControllerDemos( $scope, $element, $rootScope, $location )
+App.controller('ControllerDemos', function ControllerDemos( $scope, $element, $rootScope, $location )
 {
 	$rootScope.ShowBack = true;
 	Scope = $scope;
@@ -33,7 +31,7 @@ function ControllerDemos( $scope, $element, $rootScope, $location )
 
 		lua.Run( "demo:DownloadAndToVideo( %s );", entry.info.fileid );
 	}
-	
+
 
 	$scope.DeleteLocal = function ( entry )
 	{
@@ -45,4 +43,4 @@ function ControllerDemos( $scope, $element, $rootScope, $location )
 
 
 	$scope.Switch( 'local', 0 );
-}
+});

@@ -3,7 +3,7 @@
 
 	<title>Creations</title>
 
-	
+
 	<link rel="stylesheet" type="text/css" href="css/Workshop.css" />
 	<link rel="stylesheet" type="text/css" href="css/creations/Creations.css" />
 
@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="js/thirdparty/jquery.js"></script>
 	<script type="text/javascript" src="js/thirdparty/jquery-color.js"></script>
 	<script type="text/javascript" src="js/thirdparty/angular.js"></script>
+	<script type="text/javascript" src="js/thirdparty/angular-route.js"></script>
 
 	<script type="text/javascript" src="js/menu/WorkshopFiles.js"></script>
 	<script type="text/javascript" src="js/menu/control.Saves.js"></script>
@@ -20,7 +21,7 @@
 	<script type="text/javascript" src="js/svc.Tranny.js"></script>
 
 	<script type="text/javascript" src="js/creations/creationsApp.js"></script>
-	
+
 </head>
 
 <body ng-app="CreationsApp" ng-controller="CCreations">
@@ -38,12 +39,12 @@
 				<a ng-href='#/saves/{{cat}}/{{MapName}}/' ng-Tranny="'saves.'+cat" ng-show="cat != ''"></a>
 				<span ng-show="cat == ''">&nbsp;</span>
 			</li>
-			
+
 			<li>&nbsp;</li>
 			<li><button ng-click="SaveSave();" ng-tranny="'save.savegame'" class="savegamebutton {{SaveDisabled}}">..</button></li>
 
 		</ul>
-				
+
 		<!-- DUPES -->
 
 		<ul>
@@ -59,13 +60,13 @@
 			<li>&nbsp;</li>
 
 			<li><button ng-click="SaveDupe();" ng-tranny="'dupes.savedupe'" class="savedupebutton {{DupeDisabled}}" enabled="false">..</button></li>
-			
+
 		</ul>
 
 			<!--
 			<input type="button" value="Reload Page" onClick="document.location.reload(true)">
 			-->
-		
+
 
 	</div>
 
